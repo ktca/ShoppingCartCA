@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\DBConnect.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="fonts\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,7 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Classes\" />
     <Folder Include="Images\ProductImages\" />
     <Folder Include="Images\SiteImages\" />
   </ItemGroup>

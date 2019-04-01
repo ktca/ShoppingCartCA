@@ -128,7 +128,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\DBConnect.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="fonts\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +179,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\ProductImages\" />
     <Folder Include="Images\SiteImages\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

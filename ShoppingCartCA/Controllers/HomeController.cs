@@ -40,7 +40,7 @@ namespace ShoppingCartCA.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-       return View();
+            return View();
         }
 
         public ActionResult Login()
@@ -58,38 +58,87 @@ namespace ShoppingCartCA.Controllers
         }
 
 
+        //[HttpPost]
+        ////[ValidateAntiForgeryToken]
+        //public ActionResult Login(string username, string password)
+        //{
+        //    if (ModelState.IsValid)
+
+        //    {
+
+        //        LoginHelper login = new LoginHelper();
+        //        UserModel um = login.GetLoginUser(username);
+
+
+        //        if (um != null)
+        //        {
+        //            var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
+
+        //            if (decryptedPwd.Equals(password))
+        //            {
+        //                if (Session["UserID"] == null)
+        //                {
+        //                    string sessionId = Guid.NewGuid().ToString();
+        //                    Session["UserID"] = sessionId;
+        //                    //FormsAuthentication.SetAuthCookie(um.UserName, false);
+
+        //                }
+        //                //ViewBag.LogInOut = "Login";
+        //                return RedirectToAction("Index");
+        //            }
+        //        }
+        //        return View(um);
+        //    }
+        //    else
+        //    {
+
+        //        return View();
+        //    }
+
+        //}
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(string username, string password)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login(UserModel userModel)
         {
-            LoginHelper login = new LoginHelper();
-            UserModel um = login.GetLoginUser(username);
-                      
+            if (ModelState.IsValid)
 
-            if (um != null)
             {
-                var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
 
-                if(decryptedPwd.Equals(password))
+                LoginHelper login = new LoginHelper();
+                UserModel um = login.GetLoginUser(userModel.UserName);
+
+
+                if (um != null)
                 {
-                    if (Session["UserID"] == null)
-                    {
-                        string sessionId = Guid.NewGuid().ToString();
-                        Session["UserID"] = sessionId;
-                        //FormsAuthentication.SetAuthCookie(um.UserName, false);
+                    var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
 
+                    if (decryptedPwd.Equals(userModel.Password))
+                    {
+                        if (Session["UserID"] == null)
+                        {
+                            string sessionId = Guid.NewGuid().ToString();
+                            Session["UserID"] = sessionId;
+                            //FormsAuthentication.SetAuthCookie(um.UserName, false);
+
+                        }
+                        //ViewBag.LogInOut = "Login";
+                        return RedirectToAction("Index");
                     }
-                    //ViewBag.LogInOut = "Login";
-                    return RedirectToAction("Index");
                 }
+                return View(um);
             }
-            return View(um);
+            else
+            {
+
+                return View();
+            }
+
         }
 
-       
+
     }
 
-  
+
 
 }
 

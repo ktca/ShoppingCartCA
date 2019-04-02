@@ -11,13 +11,12 @@ namespace ShoppingCartCA.Models
     public class UserModel
     {
         [DisplayName("User ID")]
-        [Required]
         public int UserID { get; set; }
+        [Required(ErrorMessage = "Username is required")]
         [DisplayName("User Name")]
-        [Required]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "Password is required")]
         [DisplayName("Password")]
-        [Required]
         public string Password { get; set; }
     }
 }

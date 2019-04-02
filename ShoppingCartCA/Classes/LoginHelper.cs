@@ -10,7 +10,8 @@ namespace ShoppingCartCA.Classes
 {
     public class LoginHelper
     {
-        public UserModel LoginValidation(string username, string password)
+        //public UserModel LoginValidation(string username, string password)
+        public UserModel GetLoginUser(string username)
         {
 
             try
@@ -24,18 +25,15 @@ namespace ShoppingCartCA.Classes
                 UserModel userModel = new UserModel();
                 if (tbl != null)
                 {
-
                     userModel.UserID = (int)tbl.Rows[0][0];
                     userModel.UserName = tbl.Rows[0][1].ToString();
-
-                    //Session["UserID"] = userModel.UserName;
                     userModel.Password = tbl.Rows[0][2].ToString();
                     return userModel;
                 }
                 return null;
 
             }
-            catch (Exception e)
+            catch (Exception me)
             {
                 return null;
             }

@@ -19,16 +19,16 @@ namespace ShoppingCartCA.Classes
                 DBConnect db = new DBConnect();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT * FROM Products";
-                    //" WHERE ProductName LIKE  '%"+keyword+"%' OR Description LIKE '%"+keyword+"%'";
+                cmd.CommandText = "SELECT * FROM Products WHERE ProductName LIKE  '%"+keyword+"%' OR Description LIKE '%"+keyword+"%'";
 
                 DataTable tbl = db.GetData(cmd);
                 List<ProductModel> productModels = new List<ProductModel>();
-                ProductModel product = new ProductModel();
+                
                 if (tbl != null)
                 {
                     foreach (DataRow row in tbl.Rows)
                     {
+                        ProductModel product = new ProductModel();
                         product.ProductID = Convert.ToInt32(row[0].ToString());
                         product.ProductName = row[1].ToString();
                         product.Description = row[2].ToString();
@@ -41,7 +41,7 @@ namespace ShoppingCartCA.Classes
                 return productModels;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

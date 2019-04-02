@@ -22,6 +22,7 @@ namespace ShoppingCartCA.Controllers
 
         public ActionResult Contact()
         {
+            //this is viewbag
             ViewBag.Message = "Your contact page.";
 
             return View();

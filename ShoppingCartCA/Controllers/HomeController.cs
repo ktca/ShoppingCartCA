@@ -13,19 +13,23 @@ namespace ShoppingCartCA.Controllers
 
 
     {
-        Common comm = new Common();
+        Product product = new Product();
         public ActionResult Index()
         {
+       
+            return View(product.GetProductList("water"));
+        }
 
-
-            //UserModel um = comm.GetUserByUsername("John");
-            return View();
+        public ActionResult SearchProduct(string keyword)
+        {
+            
+            return View(product.GetProductList(""));
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            
             return View();
         }
 

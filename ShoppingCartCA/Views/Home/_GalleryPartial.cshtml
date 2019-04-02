@@ -1,0 +1,13 @@
+﻿@model List<ShoppingCartCA.Models.ProductModel>
+
+@foreach (var product in Model)
+{
+    <div class="col-md-4" style="text-align:center;">
+        <img src="@product.ImagePath" width="50%;" height="50%;" style="text-align:center;" />
+        <h2>@product.ProductName</h2>
+        <p style="text-align:left;">
+            @product.Description
+        </p>
+        <p><a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301865"> $@decimal.Round(product.Price, 2) - Add To Cart &raquo;</a></p>
+    </div>
+}

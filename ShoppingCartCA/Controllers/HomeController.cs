@@ -76,7 +76,7 @@ namespace ShoppingCartCA.Controllers
                     {
                         string sessionId = Guid.NewGuid().ToString();
                         Session["UserID"] = sessionId;
-                        FormsAuthentication.SetAuthCookie(um.UserName, false);
+                        //FormsAuthentication.SetAuthCookie(um.UserName, false);
 
                     }
                     //ViewBag.LogInOut = "Login";

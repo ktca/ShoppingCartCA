@@ -10,7 +10,6 @@ namespace ShoppingCartCA.Classes
     public class DBConnect
     {
         SqlConnection cn;
-        SqlCommand cmd;
 
 
         public DBConnect()

@@ -128,10 +128,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\Common.cs" />
     <Compile Include="Classes\DBConnect.cs" />
+    <Compile Include="Classes\Product.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivationCodeModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PurchaseDetailModel.cs" />
     <Compile Include="Models\PurchaseModel.cs" />
@@ -175,6 +177,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_GalleryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

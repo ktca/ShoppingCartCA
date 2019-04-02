@@ -10,11 +10,17 @@ namespace ShoppingCartCA.Controllers
 {
     public class HomeController : Controller
     {
+        Product product = new Product();
         public ActionResult Index()
         {
-            Common comm = new Common();
-            UserModel um = comm.GetUserByUsername("aa");
-            return View();
+       
+            return View(product.GetProductList(""));
+        }
+
+        public ActionResult SearchProduct(string keyword)
+        {
+            
+            return View(product.GetProductList(""));
         }
 
         public ActionResult About()

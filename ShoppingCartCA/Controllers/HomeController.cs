@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShoppingCartCA.Models;
+using ShoppingCartCA.Classes;
 
-namespace WebApplication2.Controllers
+namespace ShoppingCartCA.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            
+            Common comm = new Common();
+            UserModel um = comm.GetUserByUsername("aa");
             return View();
         }
 
@@ -23,6 +26,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult Contact()
         {
+            //this is viewbag
             ViewBag.Message = "Your contact page.";
 
             return View();

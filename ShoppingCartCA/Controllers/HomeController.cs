@@ -14,7 +14,7 @@ namespace ShoppingCartCA.Controllers
         public ActionResult Index()
         {
        
-            return View(product.GetProductList(""));
+            return View(product.GetProductList("water"));
         }
 
         public ActionResult SearchProduct(string keyword)

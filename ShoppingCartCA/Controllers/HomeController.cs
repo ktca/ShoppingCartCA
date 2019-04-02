@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShoppingCartCA.Models;
+using ShoppingCartCA.Classes;
 
 namespace ShoppingCartCA.Controllers
 {
@@ -11,6 +13,8 @@ namespace ShoppingCartCA.Controllers
     {
         public ActionResult Index()
         {
+            Common comm = new Common();
+            UserModel um = comm.GetUserByUsername("aa");
             return View();
         }
 

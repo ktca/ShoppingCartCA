@@ -10,11 +10,15 @@ using ShoppingCartCA.Classes;
 namespace ShoppingCartCA.Controllers
 {
     public class HomeController : Controller
+
+
     {
+        Common comm = new Common();
         public ActionResult Index()
         {
-            Common comm = new Common();
-            UserModel um = comm.GetUserByUsername("aa");
+
+
+            //UserModel um = comm.GetUserByUsername("John");
             return View();
         }
 
@@ -41,23 +45,28 @@ namespace ShoppingCartCA.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserModel objUser)
+        public ActionResult Login(string username, string pwd)
         {
-            if (ModelState.IsValid)
-            {
+            LoginHelper login = new LoginHelper();
+            UserModel um = login.LoginValidation(username, pwd);
 
-                //using (SqlConnection con = new SqlConnection(connectionString))
-                using (DB_Entities db = new DB_Entities())
+
+            if (um != null)
+            {
+                if (Session[username] == null)
                 {
-                    var obj = db.UserProfiles.Where(a => a.UserName.Equals(objUser.UserName) && a.Password.Equals(objUser.Password)).FirstOrDefault();
-                    if (obj != null)
-                    {
-                        Session["UserID"] = obj.UserId.ToString();
-                        Session["UserName"] = obj.UserName.ToString();
-                        return RedirectToAction("UserDashBoard");
-                    }
+                    string sessionId = Guid.NewGuid().ToString();
+                    Session["UserID"] = sessionId;
                 }
+
+
+                return RedirectToAction("Index");
             }
-            return View(objUser);
+
+            return View(um);
+
         }
+
+
     }
+}

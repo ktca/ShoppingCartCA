@@ -23,8 +23,26 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
                 </ul>
+
+                @*<div>
+                    @Html.ActionLink((string)ViewBag.LogInOut, "Home")
+
+                </div>*@
+
+                @*@if (Request.IsAuthenticated)
+                {
+                    <strong>@Html.Encode(User.Identity.Name)</strong>
+                    @Html.ActionLink("Log Out", "Logout", "Home")
+                }
+                else
+                {
+                    <strong>@Html.Encode(User.Identity.Name)</strong>
+                    @Html.ActionLink("Log In", "Login", "Home")
+                }*@
             </div>
+            
         </div>
     </div>
     <div class="container body-content">

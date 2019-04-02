@@ -5,12 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using ShoppingCartCA.Models;
 using ShoppingCartCA.Classes;
+using System.Web.Security;
+using System.Security.Cryptography;
+using System.Text;
 using System.IO;
 
 namespace ShoppingCartCA.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly string KEY = "Secured";
+
         Product product = new Product();
 
         //Gallery Page
@@ -18,24 +23,6 @@ namespace ShoppingCartCA.Controllers
         {
             return View(product.GetProductList(null));
         }
-
-        
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            //this is viewbag
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         //Gallery Search
         public ActionResult SearchProduct(string keyword)
         {
@@ -63,5 +50,260 @@ namespace ShoppingCartCA.Controllers
                 return ex.ToString();
             }
         }
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            //var encrypt = Cipher.Encrypt("123", KEY);
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["UserID"] = null;
+            FormsAuthentication.SignOut();
+            //ViewBag.LogInOut = "Logout";
+            return RedirectToAction("Index");
+        }
+
+
+        //[HttpPost]
+        ////[ValidateAntiForgeryToken]
+        //public ActionResult Login(string username, string password)
+        //{
+        //    if (ModelState.IsValid)
+
+        //    {
+
+        //        LoginHelper login = new LoginHelper();
+        //        UserModel um = login.GetLoginUser(username);
+
+
+        //        if (um != null)
+        //        {
+        //            var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
+
+        //            if (decryptedPwd.Equals(password))
+        //            {
+        //                if (Session["UserID"] == null)
+        //                {
+        //                    string sessionId = Guid.NewGuid().ToString();
+        //                    Session["UserID"] = sessionId;
+        //                    //FormsAuthentication.SetAuthCookie(um.UserName, false);
+
+        //                }
+        //                //ViewBag.LogInOut = "Login";
+        //                return RedirectToAction("Index");
+        //            }
+        //        }
+        //        return View(um);
+        //    }
+        //    else
+        //    {
+
+        //        return View();
+        //    }
+
+        //}
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login(UserModel userModel)
+        {
+            if (ModelState.IsValid)
+
+            {
+
+                LoginHelper login = new LoginHelper();
+                UserModel um = login.GetLoginUser(userModel.UserName);
+
+
+                if (um != null)
+                {
+                    var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
+
+                    if (decryptedPwd.Equals(userModel.Password))
+                    {
+                        if (Session["UserID"] == null)
+                        {
+                            string sessionId = Guid.NewGuid().ToString();
+                            Session["UserID"] = sessionId;
+                            //FormsAuthentication.SetAuthCookie(um.UserName, false);
+
+                        }
+                        //ViewBag.LogInOut = "Login";
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View(um);
+            }
+            else
+            {
+
+                return View();
+            }
+
+        }
+        
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,9 +7,9 @@ namespace ShoppingCartCA.Models
 {
     public class UserCartModel
     {
-        public int CartID { get; set; }
-        public int UserID { get; set; }
-        public int ProductID { get; set; }
-        public int Quantity { get; set; }
+        public int cartID { get; set; }
+        public int userID { get; set; }
+        public int productID { get; set; }
+        public int quantity { get; set; }
     }
 }

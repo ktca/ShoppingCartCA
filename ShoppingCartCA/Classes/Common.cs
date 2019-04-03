@@ -25,9 +25,9 @@ namespace ShoppingCartCA.Classes
                 UserModel userModel = new UserModel();
                 if (tbl != null)
                 {
-                    userModel.UserID= Convert.ToInt32(tbl.Rows[0][0].ToString());
-                    userModel.UserName = tbl.Rows[0][1].ToString();
-                    userModel.Password = tbl.Rows[0][2].ToString();
+                    userModel.userId= Convert.ToInt32(tbl.Rows[0][0].ToString());
+                    userModel.username = tbl.Rows[0][1].ToString();
+                    userModel.password = tbl.Rows[0][2].ToString();
                     return userModel;
                 }
                 return null;

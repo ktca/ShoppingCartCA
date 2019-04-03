@@ -28,14 +28,14 @@ namespace ShoppingCartCA.Controllers
 
             {
                 LoginHelper login = new LoginHelper();
-                UserModel um = login.GetLoginUser(userModel.UserName);
+                UserModel um = login.GetLoginUser(userModel.username);
 
 
                 if (um != null)
                 {
-                    var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
+                    var decryptedPwd = Cipher.Decrypt(um.password, KEY);
 
-                    if (decryptedPwd.Equals(userModel.Password))
+                    if (decryptedPwd.Equals(userModel.password))
                     {
                         if (Session["UserID"] == null)
                         {

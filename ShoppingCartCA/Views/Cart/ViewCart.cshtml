@@ -1,0 +1,41 @@
+﻿@model List<ShoppingCartCA.Models.UserCartModel>
+@{
+                /**/
+
+                ViewBag.Title = "View Cart";
+}
+
+<h2>ViewCart</h2>
+@foreach (var cart in Model)
+{
+    <div class="row" style="padding-left:10%; padding-right:10%;">
+
+        <div class="col-md-4">
+            <img src="@cart.product.imagePath" width="50%;" height="50%;" />
+            <h2>@cart.product.productName</h2>
+            <p style="text-align:left;">
+                @cart.product.description
+            </p>
+        </div>
+        <div class="col-md-4" style="padding-top:8%;">
+            <p>
+                Price : @cart.product.price
+            </p>
+            <p>
+                Quantity : <input id="txtMyDecimal" value=@cart.quantity min="0" max="50" step="1" type="number">
+            </p>
+        </div>
+
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+

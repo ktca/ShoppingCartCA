@@ -6,11 +6,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace ShoppingCartCA
+namespace ShoppingCartCA.Classes
 {
-    public static class Cipher
+    public class Cipher
     {
-        
         public static string Encrypt(string plainText, string key)
         {
             if (plainText == null)

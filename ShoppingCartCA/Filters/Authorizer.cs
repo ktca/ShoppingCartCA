@@ -13,9 +13,9 @@ namespace ShoppingCartCA.Filters
     {
         public void OnAuthorization(AuthorizationContext ac)
         {
-            //string sessionId = HttpContext.Current.Request["sessionId"];
+            string sessionId = HttpContext.Current.Request["sessionId"];
             var session = HttpContext.Current.Session;
-            var  sessionId = session["UserID"];
+            //var  sessionId = session["UserID"];
             //Session["UserID"]
             //string sessionId = ["UserID"];
 

@@ -3,15 +3,15 @@
 @foreach (var product in Model)
 {
     <div class="col-md-4" style="text-align:center;">
-        <img src="@product.ImagePath" width="50%;" height="50%;"  />
-        <h2>@product.ProductName</h2>
+        <img src="@product.imagePath" width="50%;" height="50%;"  />
+        <h2>@product.productName</h2>
         <p style="text-align:left;">
-            @product.Description
+            @product.description
         </p>
         <p>
-            <a class="btn btn-success" style="text-decoration:none;" onclick="AddToCart(@product.ProductID)">
+            <a class="btn btn-success" style="text-decoration:none;" onclick="AddToCart(@product.productID)">
                 <i class="glyphicon glyphicon-shopping-cart"></i>
-                $@decimal.Round(product.Price, 2).ToString() - Add To Cart &raquo;
+                $@decimal.Round(product.price, 2).ToString() - Add To Cart &raquo;
             </a>
             
         </p>

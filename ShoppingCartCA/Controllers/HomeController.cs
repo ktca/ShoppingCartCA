@@ -20,7 +20,7 @@ namespace ShoppingCartCA.Controllers
         Product product = new Product();
 
         //Gallery Page
-        [Authorizer]
+        //[Authorizer]
         public ActionResult Index()
         {
             return View(product.GetProductList(null));
@@ -61,6 +61,14 @@ namespace ShoppingCartCA.Controllers
             catch (System.Exception ex)
             {
                 return ex.ToString();
+            }
+        }
+        public void OrganizeCart()
+        {
+            var cart = Session["Cart"] != null? (List<int>)Session["Cart"] : null;
+            if (cart != null)
+            {
+
             }
         }
         public ActionResult About()

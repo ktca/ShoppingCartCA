@@ -1,5 +1,4 @@
-﻿using ShoppingCartCA.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,22 +18,42 @@ namespace ShoppingCartCA.Controllers
         private readonly string KEY = "Secured";
 
         Product product = new Product();
+
+        //Gallery Page
         public ActionResult Index()
         {
-
-            return View(product.GetProductList("water"));
+            return View(product.GetProductList(null));
         }
-
+        //Gallery Search
         public ActionResult SearchProduct(string keyword)
         {
-
-            return View(product.GetProductList(""));
+            string partialViewData;
+            partialViewData = RenderPartialViewToString("_GalleryPartial", product.GetProductList(keyword));
+            return Json(partialViewData, JsonRequestBehavior.AllowGet);
         }
 
+        public string RenderPartialViewToString(string viewName, object model)
+        {
+            this.ViewData.Model = model;
+            try
+            {
+                using (StringWriter stringWriter = new StringWriter())
+                {
+                    ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(this.ControllerContext, viewName);
+                    ViewContext viewContext = new ViewContext(this.ControllerContext, viewResult.View, this.ViewData, this.TempData, stringWriter);
+                    viewResult.View.Render(viewContext, stringWriter);
+
+                    return stringWriter.GetStringBuilder().ToString();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
@@ -95,12 +114,9 @@ namespace ShoppingCartCA.Controllers
             }
 
         }
-
-
+        
     }
-
-
-
+    
 }
 
 

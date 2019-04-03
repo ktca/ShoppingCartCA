@@ -2,33 +2,37 @@
 @{
     ViewBag.Title = "Gallery";
 }
-
-@Html.Partial("_GalleryPartial")
-@*@foreach (var product in Model)
-    {
-        <div class="col-md-4" style="text-align:center;">
-        <img src="~/Images/ProductImages/giftcard.jpg" width="50%;" height="50%;" style="text-align:center;"/>
-        <h2>Product 1</h2>
-        <p style="text-align:left;">
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301865"> $245.66 - Add To Cart &raquo;</a></p>
+<div class="row" style="padding-top:20px;">
+    <div class="col-md-12" >
+        @Html.TextBox("searchKeyword", "", new { @id = "searchBox", @class = "form-control",@onkeypress= "search(event);" })
     </div>
-    }*@
-@*<div class="row">*@
+    
+</div>
+<div id="partial">
+    @Html.Partial("_GalleryPartial")
+</div>
 
-@*<script type="text/javascript">
-    $.ajax({
-        url: "YourController/GetData",
-        type: "get",
-        data: $("form").serialize(), //if you need to post Model data, use this
-        success: function (result) {
-            $("#partial").html(result);
+<script type="text/javascript">
+
+    function search(e) {
+        debugger;
+        if (e.keyCode == 13 || e.which == 13) {
+            var key = document.getElementById("searchBox").value;
+
+            var url = "../Home/SearchProduct?keyword=" + key;
+            $.ajax({
+                url: url,
+                type: "POST",
+                async: true,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    $("#partial").html(result);
+                }
+            });
         }
-    });
-</script>*@
+    }
+</script>
 
 
 

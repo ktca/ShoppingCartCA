@@ -7,7 +7,7 @@ namespace ShoppingCartCA.Models
 {
     public class ProductModel
     {
-        public int productID { get; set; }
+        public int productId { get; set; }
         public string productName { get; set; }
         public string description { get; set; }
         public decimal price { get; set; }

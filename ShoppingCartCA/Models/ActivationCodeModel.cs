@@ -8,6 +8,6 @@ namespace ShoppingCartCA.Models
     public class ActivationCodeModel
     {
         public Guid activationCode { get; set; }
-        public int purchaseDetailID { get; set; }
+        public int purchaseDetailId { get; set; }
     }
 }

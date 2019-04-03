@@ -7,9 +7,9 @@ namespace ShoppingCartCA.Models
 {
     public class PurchaseDetailModel
     {
-        public int purchaseDetailID { get; set; }
-        public int purchaseID { get; set; }
-        public int productID { get; set; }
+        public int purchaseDetailId { get; set; }
+        public int purchaseId { get; set; }
+        public int productId { get; set; }
         public int quantity { get; set; }
         public decimal price { get; set; }
         public string activationCode { get; set; }

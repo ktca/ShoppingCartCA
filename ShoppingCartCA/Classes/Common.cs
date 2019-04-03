@@ -56,14 +56,14 @@ namespace ShoppingCartCA.Classes
                     {
                         UserCartModel userCartModel = new UserCartModel();
                         ProductModel product = new ProductModel();
-                        product.productID= Convert.ToInt32(row[0].ToString());
+                        product.productId= Convert.ToInt32(row[0].ToString());
                         product.productName = row[1].ToString();
                         product.description= row[2].ToString();
                         product.price = Convert.ToDecimal(row[3].ToString());
                         product.imagePath= row[4].ToString();
 
                         userCartModel.product = product;
-                        userCartModel.quantity= products.Count(x => x == product.productID);
+                        userCartModel.quantity= products.Count(x => x == product.productId);
 
                         userCartModels.Add(userCartModel);
                         

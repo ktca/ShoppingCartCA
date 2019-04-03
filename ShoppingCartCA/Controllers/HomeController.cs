@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
+using ShoppingCartCA.Filters;
 
 namespace ShoppingCartCA.Controllers
 {
@@ -53,51 +54,13 @@ namespace ShoppingCartCA.Controllers
         {
             Session["UserID"] = null;
             FormsAuthentication.SignOut();
-            //ViewBag.LogInOut = "Logout";
             return RedirectToAction("Index");
         }
 
 
-        //[HttpPost]
-        ////[ValidateAntiForgeryToken]
-        //public ActionResult Login(string username, string password)
-        //{
-        //    if (ModelState.IsValid)
 
-        //    {
-
-        //        LoginHelper login = new LoginHelper();
-        //        UserModel um = login.GetLoginUser(username);
-
-
-        //        if (um != null)
-        //        {
-        //            var decryptedPwd = Cipher.Decrypt(um.Password, KEY);
-
-        //            if (decryptedPwd.Equals(password))
-        //            {
-        //                if (Session["UserID"] == null)
-        //                {
-        //                    string sessionId = Guid.NewGuid().ToString();
-        //                    Session["UserID"] = sessionId;
-        //                    //FormsAuthentication.SetAuthCookie(um.UserName, false);
-
-        //                }
-        //                //ViewBag.LogInOut = "Login";
-        //                return RedirectToAction("Index");
-        //            }
-        //        }
-        //        return View(um);
-        //    }
-        //    else
-        //    {
-
-        //        return View();
-        //    }
-
-        //}
+        [Authorizer]
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public ActionResult Login(UserModel userModel)
         {
             if (ModelState.IsValid)
@@ -118,10 +81,8 @@ namespace ShoppingCartCA.Controllers
                         {
                             string sessionId = Guid.NewGuid().ToString();
                             Session["UserID"] = sessionId;
-                            //FormsAuthentication.SetAuthCookie(um.UserName, false);
-
                         }
-                        //ViewBag.LogInOut = "Login";
+
                         return RedirectToAction("Index");
                     }
                 }

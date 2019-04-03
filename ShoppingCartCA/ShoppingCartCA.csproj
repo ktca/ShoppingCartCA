@@ -132,6 +132,7 @@
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\LoginHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\Authorizer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

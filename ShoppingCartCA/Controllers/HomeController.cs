@@ -33,6 +33,17 @@ namespace ShoppingCartCA.Controllers
             return Json(partialViewData, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult AddToCart(int id)
+        {
+            List<int> productsInCart = new List<int>();
+            if (Session["Cart"]!=null)   productsInCart = (List<int>)Session["Cart"];
+            productsInCart.Add(id);
+
+            Session["Cart"] = productsInCart;
+            return Json(productsInCart.Count(), JsonRequestBehavior.AllowGet);
+        
+    }
+
         public string RenderPartialViewToString(string viewName, object model)
         {
             this.ViewData.Model = model;

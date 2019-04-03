@@ -1,0 +1,38 @@
+﻿.header-right li {
+    display: block;
+}
+
+    .header-right li a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.1em;
+        background: #D96B66;
+        padding: 0.4em 2em;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -o-border-radius: 3px;
+        -ms-border-radius: 3px;
+        display: block;
+    }
+
+        .header-right li a:hover {
+            color: #fff;
+            background: #5fa022;
+        }
+
+.header-right {
+    float: right;
+    vertical-align: middle;
+}
+
+.box_1 h3 {
+    color: #5BBD50;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    float: left;
+}
+
+    .box_1 h3 img {
+        margin-left: 3px;
+    }

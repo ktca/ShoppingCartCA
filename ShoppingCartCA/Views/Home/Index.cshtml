@@ -32,6 +32,24 @@
             });
         }
     }
+    function AddToCart(id) {
+
+        var url = "../Home/AddToCart?id=" + id;
+        $.ajax({
+            url: url,
+            type: "POST",
+            async: true,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                //alert("Success !!! " + data);
+                
+                loadCart();
+                //$("#cartDiv").load(' #oderBox');
+            }
+
+        });
+    }
 </script>
 
 

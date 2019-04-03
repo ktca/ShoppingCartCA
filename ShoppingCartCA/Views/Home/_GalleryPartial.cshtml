@@ -8,7 +8,13 @@
         <p style="text-align:left;">
             @product.Description
         </p>
-        <p><a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301865"> $@decimal.Round(product.Price,2).ToString() - Add To Cart &raquo;</a></p>
+        <p>
+            <a class="btn btn-success" style="text-decoration:none;" onclick="AddToCart(@product.ProductID)">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+                $@decimal.Round(product.Price, 2).ToString() - Add To Cart &raquo;
+            </a>
+            
+        </p>
     </div>
     
 }

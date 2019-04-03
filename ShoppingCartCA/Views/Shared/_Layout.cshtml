@@ -28,16 +28,13 @@
                 </ul>
                 <div class="header-right">
                     <div class="box_1" id="cart">
-                        <a href="@Url.Action("Index", "Home")">
+                        <a href="@Url.Action("Index", "Home")" >
 
                             @{
                                 int count = 0;
-                                //List<int[]> intList = (List<int[]>)TempData["OrderList"];
-                                //TempData.Keep("OrderList");
-                                //if (intList != null)
-                                //{
-                                //    count = intList.Count;
-                                //}
+                                if (Session["Cart"] != null)
+                                { count = ((List<int>)Session["Cart"]).Count(); }
+                                
                             }
                             <h3><i class="glyphicon glyphicon-shopping-cart"></i> @count  item(s) </h3>
                         </a>
@@ -45,30 +42,30 @@
                     </div>
                 </div>
                 @*<div>
-            @Html.ActionLink((string)ViewBag.LogInOut, "Home")
+                        @Html.ActionLink((string)ViewBag.LogInOut, "Home")
 
-        </div>*@
+                    </div>*@
 
                 @*@if (Request.IsAuthenticated)
-        {
-            <strong>@Html.Encode(User.Identity.Name)</strong>
-            @Html.ActionLink("Log Out", "Logout", "Home")
-        }
-        else
-        {
-            <strong>@Html.Encode(User.Identity.Name)</strong>
-            @Html.ActionLink("Log In", "Login", "Home")
-        }*@
+                    {
+                        <strong>@Html.Encode(User.Identity.Name)</strong>
+                        @Html.ActionLink("Log Out", "Logout", "Home")
+                    }
+                    else
+                    {
+                        <strong>@Html.Encode(User.Identity.Name)</strong>
+                        @Html.ActionLink("Log In", "Login", "Home")
+                    }*@
             </div>
-            
+
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         @*<footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -76,3 +73,9 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script type="text/javascript">
+        function loadCart() {
+            $('#cart').load(document.URL + ' #cart');
+        }
+       
+</script>

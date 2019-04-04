@@ -36,24 +36,23 @@
             <div class="row" style="padding-left:10%; padding-right:10%;">
 
                 <div class="col-md-8">
-                    <img src="@cart.product.imagePath" width="30%;" height="30%;" />
-                    <h2>@cart.product.productName</h2>
+                    <img src="@cart.product.imagePath" width="200px;" height="200px;" />
+                    <h3>@cart.product.productName</h3>
                     <p style="text-align:left;">
                         @cart.product.description
                     </p>
                 </div>
                 <div class="col-md-4" style="padding-top:8%;">
                     <p>
-                        <b>Price : </b> @cart.product.price
+                        <b>Price : </b> $ @cart.product.price
                     </p>
                     <p>
                         <b>Quantity : </b><input id="txtQty" value=@cart.quantity min="0" max="50" step="1" type="number" oninput="changeQty(@cart.product.productId,this);">
-                        @*onchange="changeQty(@cart.product.productId);"*@
-
                     </p>
                 </div>
 
             </div>
+            <hr />
         }
     }
 }

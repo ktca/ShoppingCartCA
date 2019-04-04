@@ -22,43 +22,48 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (Session["UserID"]!=null) { 
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Purchase History", "PurchaseHistory", "PurchaseHistory")</li>
-                    @*<li>@Html.ActionLink("Login", "Login", "Login")</li>*@}
+                    @if (Session["UserID"] != null)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Purchase History", "PurchaseHistory", "PurchaseHistory")</li>
+                        @*<li>@Html.ActionLink("Login", "Login", "Login")</li>*@}
                 </ul>
-                <div class="header-right">
-                    <div class="box_1" id="cart">
-                        <a href="@Url.Action("ViewCart", "Cart")" >
+                @if (Session["UserID"] != null)
+                {
+                    <div class="header-right">
+                        <div class="box_1" id="cart">
+                            <a href="@Url.Action("ViewCart", "Cart")">
 
-                            @{
-                                int count = 0;
-                                if (Session["Cart"] != null)
-                                { count = ((List<int>)Session["Cart"]).Count(); }
-                                
-                            }
-                            <h3><i class="glyphicon glyphicon-shopping-cart"></i> @count  item(s) </h3>
-                        </a>
-                        <div class="clearfix"> </div>
+                                @{
+                                    int count = 0;
+                                    if (Session["Cart"] != null)
+                                    { count = ((List<int>)Session["Cart"]).Count(); }
+
+                                }
+                                <h3><i class="glyphicon glyphicon-shopping-cart"></i> @count  item(s) </h3>
+                            </a>
+                            <div class="clearfix"> </div>
+                        </div>
                     </div>
-                </div>
-                @*<div>
-                        @Html.ActionLink((string)ViewBag.LogInOut, "Home")
+                }
 
-                    </div>*@
+                @*<div>
+            @Html.ActionLink((string)ViewBag.LogInOut, "Home")
+
+        </div>*@
 
                 @*@if (Request.IsAuthenticated)
-                    {
-                        <strong>@Html.Encode(User.Identity.Name)</strong>
-                        @Html.ActionLink("Log Out", "Logout", "Home")
-                    }
-                    else
-                    {
-                        <strong>@Html.Encode(User.Identity.Name)</strong>
-                        @Html.ActionLink("Log In", "Login", "Home")
-                    }*@
+        {
+            <strong>@Html.Encode(User.Identity.Name)</strong>
+            @Html.ActionLink("Log Out", "Logout", "Home")
+        }
+        else
+        {
+            <strong>@Html.Encode(User.Identity.Name)</strong>
+            @Html.ActionLink("Log In", "Login", "Home")
+        }*@
             </div>
 
         </div>

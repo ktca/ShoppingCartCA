@@ -131,6 +131,7 @@
     <Compile Include="Classes\DBConnect.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\LoginHelper.cs" />
+    <Compile Include="Classes\Purchase.cs" />
     <Compile Include="Classes\PurchaseDA.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

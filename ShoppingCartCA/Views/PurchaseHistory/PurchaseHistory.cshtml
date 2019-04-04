@@ -29,17 +29,17 @@
                     <td>
                         @if (purchase.quantity > 1)
                         {
-                                var codes = purchase.activationCode.Split(',').ToArray();
-                                List<SelectListItem> listItems = new List<SelectListItem>();
-                                foreach(var code in codes)
+                            var codes = purchase.activationCode.Split(',').ToArray();
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            foreach (var code in codes)
+                            {
+                                listItems.Add(new SelectListItem
                                 {
-                                    listItems.Add(new SelectListItem
-                                    {
-                                        Text = code,
-                                        Value = code
-                                    });
-                                }
-                            
+                                    Text = code,
+                                    Value = code
+                                });
+                            }
+
                             @Html.DropDownList("ActivationCode", listItems)
                         }
                         else
@@ -48,10 +48,13 @@
                         }
                     </td>
                 </tr>
-              
+
             </table>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 }
 
 

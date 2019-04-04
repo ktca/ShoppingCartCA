@@ -1,11 +1,15 @@
 ﻿@model List<ShoppingCartCA.Models.UserCartModel>
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "View Cart";
+    ViewBag.Title = "View Cart";
 }
 
 <h2>ViewCart</h2>
+<div class="row" style="text-align:right; padding-right:10%;">
+    @{ var total = Model != null ? Model.Sum(x => x.productTotalPrice) : 0;}
+    Total : $@total
+</div>
 @foreach (var cart in Model)
 {
     <div class="row" style="padding-left:10%; padding-right:10%;">

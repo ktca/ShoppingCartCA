@@ -14,11 +14,15 @@ namespace ShoppingCartCA.Controllers
         public ActionResult ViewCart()
         {
             List<UserCartModel> cartList = new List<UserCartModel>();
-            List<int> productList = (List<int>)Session["Cart"];
-            if (productList.Count() > 0)
+            List<int> productList = new List<int>();
+            if (Session["Cart"] != null)
             {
-                Common common = new Common();
-                cartList = common.GetProductList(productList);
+                productList = (List<int>)Session["Cart"];
+                if (productList != null || productList.Count() > 0)
+                {
+                    Product product = new Product();
+                    cartList = product.GetCartProductList(productList);
+                }
             }
             return View(cartList);
         }

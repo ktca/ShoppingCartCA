@@ -37,46 +37,6 @@ namespace ShoppingCartCA.Classes
             }
 
         }
-        public List<UserCartModel> GetProductList(List<int> products)
-        {
-            try
-            {
-                string productIDs= string.Join(", ", products);
-
-                DBConnect db = new DBConnect();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT * FROM Products WHERE ProductID in ("+productIDs+")";
-
-                DataTable tbl = db.GetData(cmd);
-                List<UserCartModel> userCartModels = new List<UserCartModel>();
-                if (tbl != null)
-                {
-                    foreach (DataRow row in tbl.Rows)
-                    {
-                        UserCartModel userCartModel = new UserCartModel();
-                        ProductModel product = new ProductModel();
-                        product.productID= Convert.ToInt32(row[0].ToString());
-                        product.productName = row[1].ToString();
-                        product.description= row[2].ToString();
-                        product.price = Convert.ToDecimal(row[3].ToString());
-                        product.imagePath= row[4].ToString();
-
-                        userCartModel.product = product;
-                        userCartModel.quantity= products.Count(x => x == product.productID);
-
-                        userCartModels.Add(userCartModel);
-                        
-                    }
-                }
-                return userCartModels;
-                
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-
-        }
+        
     }
 }

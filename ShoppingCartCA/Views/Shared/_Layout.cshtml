@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
@@ -21,11 +22,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @if (Session["UserID"]!=null) { 
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Purchase History", "PurchaseHistory", "PurchaseHistory")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                    @*<li>@Html.ActionLink("Login", "Login", "Login")</li>*@}
                 </ul>
                 <div class="header-right">
                     <div class="box_1" id="cart">

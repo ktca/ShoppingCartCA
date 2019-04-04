@@ -10,5 +10,6 @@ namespace ShoppingCartCA.Models
         public int purchaseId { get; set; }
         public DateTime purchaseDate { get; set; }
         public int userID { get; set; }
+        
     }
 }

@@ -1,0 +1,66 @@
+﻿@model List<ShoppingCartCA.Models.PurchaseDetailModel>
+@{
+    ViewBag.Title = "My Purchases";
+}
+
+<h2>My Purchases</h2>
+@foreach (var purchase in Model)
+{
+    <div class="row" style="padding-left:10%; padding-right:10%;">
+
+        <div class="col-md-4">
+            <img src="@purchase.Product.imagePath" width="50%;" height="50%;" />
+            <h2>@purchase.Product.productName</h2>
+            <p style="text-align:left;">@purchase.Product.description</p>
+            <input type="submit" value="Download" />
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td><p>Purchase On:</p></td>
+                    <td>@Html.Label(purchase.PurchaseHeader.purchaseDate.ToShortDateString())</td>
+                </tr>
+                <tr>
+                    <td><p>Quantity:</p></td>
+                    <td>@Html.Label(purchase.quantity.ToString())</td>
+                </tr>
+                <tr>
+                    <td><p>Activation Code:</p></td>
+                    <td>
+                        @if (purchase.quantity > 1)
+                        {
+                                var codes = purchase.activationCode.Split(',').ToArray();
+                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                foreach(var code in codes)
+                                {
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = code,
+                                        Value = code
+                                    });
+                                }
+                            
+                            @Html.DropDownList("ActivationCode", listItems)
+                        }
+                        else
+                        {
+                            @Html.Label(purchase.activationCode)
+                        }
+                    </td>
+                </tr>
+              
+            </table>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+

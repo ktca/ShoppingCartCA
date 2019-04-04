@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ShoppingCartCA.Models
 {
@@ -13,5 +14,10 @@ namespace ShoppingCartCA.Models
         public int quantity { get; set; }
         public decimal price { get; set; }
         public string activationCode { get; set; }
+        //public IEnumerable<SelectListItem> ActivationCodes { get; set; }
+
+        public PurchaseModel PurchaseHeader { get; set; }
+
+        public ProductModel Product { get; set; }
     }
 }

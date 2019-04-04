@@ -37,11 +37,16 @@ namespace ShoppingCartCA.Controllers
 
                     if (decryptedPwd.Equals(userModel.password))
                     {
+                        //if (Session["sessionId"] == null)
+                        //{
+                        //    string sessionId = Guid.NewGuid().ToString();
+                        //    Session["sessionId"] = sessionId;
+                        //    Session["UserID"] = um.userId;
+
+                        //}
                         if (Session["UserID"] == null)
                         {
-                            string sessionId = Guid.NewGuid().ToString();
-                            Session["UserID"] = sessionId;
-
+                            Session["UserID"] = um.userId;
                         }
                         return RedirectToAction("Index", new RouteValueDictionary(
                         new { controller = "Home", action = "Index" }));
@@ -60,6 +65,7 @@ namespace ShoppingCartCA.Controllers
 
         public ActionResult Logout()
         {
+            //Session["sessionId"] = null;
             Session["UserID"] = null;
             //FormsAuthentication.SignOut();
             return RedirectToAction("Index");

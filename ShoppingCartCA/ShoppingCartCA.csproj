@@ -131,9 +131,11 @@
     <Compile Include="Classes\DBConnect.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\LoginHelper.cs" />
+    <Compile Include="Classes\PurchaseDA.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PurchaseHistoryController.cs" />
     <Compile Include="Filters\Authorizer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +190,7 @@
     <Content Include="Views\Home\_GalleryPartial.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
+    <Content Include="Views\PurchaseHistory\PurchaseHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

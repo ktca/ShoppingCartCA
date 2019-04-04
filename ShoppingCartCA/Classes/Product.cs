@@ -29,7 +29,7 @@ namespace ShoppingCartCA.Classes
                     foreach (DataRow row in tbl.Rows)
                     {
                         ProductModel product = new ProductModel();
-                        product.productID = Convert.ToInt32(row[0].ToString());
+                        product.productId = Convert.ToInt32(row[0].ToString());
                         product.productName = row[1].ToString();
                         product.description = row[2].ToString();
                         product.price = Decimal.Parse(row[3].ToString());

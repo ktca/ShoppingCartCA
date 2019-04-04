@@ -23,6 +23,8 @@ namespace ShoppingCartCA.Controllers
         //[Authorizer]
         public ActionResult Index()
         {
+            if (Session["UserID"] == null)
+                return RedirectToAction("Login", "Login");
             return View(product.GetProductList(null));
         }
         //Gallery Search

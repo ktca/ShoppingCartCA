@@ -10,7 +10,7 @@ namespace ShoppingCartCA.Classes
 {
     public class Purchase
     {
-        public bool SavePurchase(List<int> cart)
+        public bool SavePurchase(List<int> cart,string userID)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace ShoppingCartCA.Classes
 
                 cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("INSERT INTO Purchases VALUES ({0}, '{1}', '{2}')", purchaseID, DateTime.Now, "1");
+                cmd.CommandText = String.Format("INSERT INTO Purchases VALUES ({0}, '{1}', '{2}')", purchaseID, DateTime.Now, userID);
                 var rowAffected = db.SetData(cmd);
 
                 if (rowAffected > 0)

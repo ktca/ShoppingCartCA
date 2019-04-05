@@ -47,7 +47,7 @@ namespace ShoppingCartCA.Controllers
             var cartModel = product.GetCartProductList(cart);
 
             decimal totalPrice = cartModel != null ? cartModel.Sum(x => x.productTotalPrice) : 0;
-            return Json(totalPrice, JsonRequestBehavior.AllowGet);
+            return Json(decimal.Round(totalPrice,2), JsonRequestBehavior.AllowGet);
 
         }
 
@@ -60,7 +60,7 @@ namespace ShoppingCartCA.Controllers
             {
                 cart = (List<int>)Session["Cart"];
                 Purchase purchase = new Purchase();
-                bool result = purchase.SavePurchase(cart);
+                bool result = purchase.SavePurchase(cart,Session["UserID"].ToString());
                 if (result)
                 {
                     Session["Cart"] = null;

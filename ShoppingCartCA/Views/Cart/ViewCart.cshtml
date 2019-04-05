@@ -80,7 +80,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 //alert("Success !!! " + data);
-                document.getElementById("totalPrice").innerHTML = "<h4>Total : $" + data+"</h4>";
+                document.getElementById("totalPrice").innerHTML = "<h4>Total : $" +parseFloat(data).toFixed(2)+"</h4>";
                 loadCart();
 
             }

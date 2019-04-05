@@ -18,7 +18,7 @@ namespace ShoppingCartCA.Controllers
             var purchaseList = new List<PurchaseDetailModel>();
             var purchaseDA = new PurchaseDA();
 
-            purchaseList = purchaseDA.GetPurchaseHistory(Session["UserId"].ToString());
+            purchaseList = purchaseDA.GetPurchaseHistory(Session["UserId"].ToString()).OrderByDescending(x=>x.PurchaseHeader.purchaseDate).ToList();
 
 
          

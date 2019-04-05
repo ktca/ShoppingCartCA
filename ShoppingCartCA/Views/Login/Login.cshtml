@@ -11,7 +11,7 @@
 @if (ViewBag.LoginFail != null && ViewBag.LoginFail)
 {
 
-    <p> @Html.Label("Incorrect username or password")</p>
+    <errMsg> @Html.Label("Incorrect username or password")</errMsg>
 }
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
@@ -48,7 +48,7 @@
         font-weight: bold;
     }
 
-    p {
+    errMsg {
         color: red
     }
 </style>

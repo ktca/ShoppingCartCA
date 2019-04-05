@@ -8,10 +8,15 @@
 }
 
 <h2>Login</h2>
+@if (ViewBag.LoginFail != null && ViewBag.LoginFail)
+{
 
+    <p> @Html.Label("Incorrect username or password")</p>
+}
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
     <table>
+
         <tr>
             <td>@Html.LabelFor(x => x.username):</td>
             <td>@Html.TextBoxFor(x => x.username)</td>
@@ -31,11 +36,7 @@
 
 <br>
 
-@if (ViewBag.LoginFail != null && ViewBag.LoginFail)
-{
-    
-   <p> @Html.Label("Incorrect username or password")</p>
-}
+
 
 <style>
     td, tr {
@@ -46,7 +47,8 @@
         color: red;
         font-weight: bold;
     }
+
     p {
-    color:red
+        color: red
     }
 </style>

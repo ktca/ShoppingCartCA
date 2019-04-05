@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Gallery";
 }
-<h3>Gallery</h3>
+<h3>Hello, @Session["DisplayName"]</h3>
 <div class="row" style="padding-top:20px;">
     <div class="col-md-12" >
         @Html.TextBox("searchKeyword", "", new { @id = "searchBox", @class = "form-control",@onkeypress= "search(event);" , @style="max-width:100%;", @placeholder="Search..."})

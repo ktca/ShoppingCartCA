@@ -2,6 +2,7 @@
 
 
 
+
 @{
     ViewBag.Title = "Login";
 }
@@ -28,6 +29,14 @@
     </table>
 }
 
+<br>
+
+@if (ViewBag.LoginFail != null && ViewBag.LoginFail)
+{
+    
+   <p> @Html.Label("Incorrect username or password")</p>
+}
+
 <style>
     td, tr {
         padding: 2px
@@ -36,5 +45,8 @@
     .field-validation-error {
         color: red;
         font-weight: bold;
+    }
+    p {
+    color:red
     }
 </style>

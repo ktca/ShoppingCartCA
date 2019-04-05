@@ -18,5 +18,7 @@ namespace ShoppingCartCA.Models
         [Required(ErrorMessage = "Password is required")]
         [DisplayName("Password")]
         public string password { get; set; }
+        [DisplayName("DisplayName")]
+        public string displayName { get; set; }
     }
 }

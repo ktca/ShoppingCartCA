@@ -22,14 +22,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (Session["UserID"] != null)
+                    @if (Session["UserId"] != null)
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Purchase History", "PurchaseHistory", "PurchaseHistory")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                     }
                 </ul>
-                @if (Session["UserID"] != null)
+                @if (Session["UserId"] != null)
                 {
                     <div class="header-right">
                         <div class="box_1" id="cart">

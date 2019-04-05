@@ -62,7 +62,7 @@ namespace ShoppingCartCA.Controllers
             {
                 cart = (List<int>)Session["Cart"];
                 Purchase purchase = new Purchase();
-                bool result = purchase.SavePurchase(cart,Session["UserID"].ToString());
+                bool result = purchase.SavePurchase(cart,Session["UserId"].ToString());
                 if (result)
                 {
                     Session["Cart"] = null;

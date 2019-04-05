@@ -22,45 +22,7 @@ namespace ShoppingCartCA.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Login(UserModel userModel)
-        //{
-        //    if (ModelState.IsValid)
-
-        //    {
-        //        LoginHelper login = new LoginHelper();
-        //        UserModel um = login.GetLoginUser(userModel.username);
-
-
-        //        if (um != null)
-        //        {
-        //            var decryptedPwd = Cipher.Decrypt(um.password, KEY);
-
-        //            if (decryptedPwd.Equals(userModel.password))
-        //            {
-        //                if (Session["sessionId"] == null)
-        //                {
-        //                    string sessionId = Guid.NewGuid().ToString();
-        //                    Session["sessionId"] = sessionId;
-        //                    Session["UserId"] = um.userId;
-        //                    Session["DisplayName"] = um.displayName;
-        //                }
-        //                return RedirectToAction("Index", new RouteValueDictionary(
-        //                new { controller = "Home", action = "Index" }));
-
-        //            }
-
-        //        }
-
-        //        return View(um);
-        //    }
-        //    else
-        //    {
-
-        //        return View();
-        //    }
-
-        //}
+       
         [HttpPost]
         public ActionResult Login(UserModel userModel)
         {

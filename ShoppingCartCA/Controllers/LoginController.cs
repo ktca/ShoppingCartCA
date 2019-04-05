@@ -14,13 +14,14 @@ namespace ShoppingCartCA.Controllers
     public class LoginController : Controller
     {
         private readonly string KEY = "Secured";
+       
         public ActionResult Login()
         {
             //var encrypt = Cipher.Encrypt("123", KEY);
             return View();
         }
 
-        //[Authorizer]
+       
         [HttpPost]
         public ActionResult Login(UserModel userModel)
         {
@@ -37,17 +38,14 @@ namespace ShoppingCartCA.Controllers
 
                     if (decryptedPwd.Equals(userModel.password))
                     {
-                        //if (Session["sessionId"] == null)
-                        //{
-                        //    string sessionId = Guid.NewGuid().ToString();
-                        //    Session["sessionId"] = sessionId;
-                        //    Session["UserID"] = um.userId;
-
-                        //}
-                        if (Session["UserID"] == null)
+                        if (Session["sessionId"] == null)
                         {
+                            string sessionId = Guid.NewGuid().ToString();
+                            Session["sessionId"] = sessionId;
                             Session["UserID"] = um.userId;
+
                         }
+                       
                         return RedirectToAction("Index", new RouteValueDictionary(
                         new { controller = "Home", action = "Index" }));
                     }
@@ -62,13 +60,13 @@ namespace ShoppingCartCA.Controllers
 
         }
 
-
+        [Authorizer]
         public ActionResult Logout()
         {
-            //Session["sessionId"] = null;
+            Session["sessionId"] = null;
             Session["UserID"] = null;
             //FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ShoppingCartCA.Classes;
+using ShoppingCartCA.Filters;
 using ShoppingCartCA.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace ShoppingCartCA.Controllers
     public class PurchaseHistoryController : Controller
     {
         // GET: Purchase
+        [Authorizer]
         public ActionResult PurchaseHistory()
         {
             var purchaseList = new List<PurchaseDetailModel>();

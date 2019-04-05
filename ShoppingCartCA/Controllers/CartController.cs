@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingCartCA.Classes;
+using ShoppingCartCA.Filters;
 using ShoppingCartCA.Models;
 
 namespace ShoppingCartCA.Controllers
@@ -11,6 +12,7 @@ namespace ShoppingCartCA.Controllers
     public class CartController : Controller
     {
         // GET: Cart
+        [Authorizer]
         public ActionResult ViewCart()
         {
             List<UserCartModel> cartList = new List<UserCartModel>();

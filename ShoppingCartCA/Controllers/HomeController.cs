@@ -15,19 +15,20 @@ namespace ShoppingCartCA.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly string KEY = "Secured";
+        private readonly string KEY = "Secured";
 
         Product product = new Product();
 
         //Gallery Page
-        //[Authorizer]
+        [Authorizer]
         public ActionResult Index()
         {
-            if (Session["UserID"] == null)
-                return RedirectToAction("Login", "Login");
+            //if (Session["UserID"] == null)
+            //    return RedirectToAction("Login", "Login");
             return View(product.GetProductList(null));
         }
         //Gallery Search
+        [Authorizer]
         public ActionResult SearchProduct(string keyword)
         {
             string partialViewData;
@@ -35,6 +36,7 @@ namespace ShoppingCartCA.Controllers
             return Json(partialViewData, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorizer]
         public ActionResult AddToCart(int id)
         {
             List<int> productsInCart = new List<int>();
@@ -73,17 +75,17 @@ namespace ShoppingCartCA.Controllers
 
             }
         }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
-        }
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
+        //    return View();
+        //}
 
     }
 

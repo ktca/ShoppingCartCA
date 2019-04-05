@@ -13,23 +13,18 @@ namespace ShoppingCartCA.Filters
     {
         public void OnAuthorization(AuthorizationContext ac)
         {
-            //string sessionId = HttpContext.Current.Request["sessionId"];
-            //var session = HttpContext.Current.Session;
-            //var sessionId = Session["sessionId"];
-            //Session["UserID"]
-            //string sessionId = ["UserID"];
 
-            //if (sessionId == null)
+            if (HttpContext.Current.Session["sessionId"] == null)
 
-            //{
-            //    ac.Result = new RedirectToRouteResult(
-            //        new RouteValueDictionary
-            //        {
-            //            { "controller", "Login" },
-            //            { "action", "Login" }
-            //        });
-            //}
-           
+            {
+                ac.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary
+                    {
+                        { "controller", "Login" },
+                        { "action", "Login" }
+                    });
+            }
+
         }
 
     }

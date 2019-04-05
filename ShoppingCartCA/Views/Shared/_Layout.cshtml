@@ -25,10 +25,9 @@
                     @if (Session["UserID"] != null)
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                         <li>@Html.ActionLink("Purchase History", "PurchaseHistory", "PurchaseHistory")</li>
-                        @*<li>@Html.ActionLink("Login", "Login", "Login")</li>*@}
+                        <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                    }
                 </ul>
                 @if (Session["UserID"] != null)
                 {
@@ -50,20 +49,20 @@
                 }
 
                 @*<div>
-            @Html.ActionLink((string)ViewBag.LogInOut, "Home")
+                        @Html.ActionLink((string)ViewBag.LogInOut, "Home")
 
-        </div>*@
+                    </div>*@
 
                 @*@if (Request.IsAuthenticated)
-        {
-            <strong>@Html.Encode(User.Identity.Name)</strong>
-            @Html.ActionLink("Log Out", "Logout", "Home")
-        }
-        else
-        {
-            <strong>@Html.Encode(User.Identity.Name)</strong>
-            @Html.ActionLink("Log In", "Login", "Home")
-        }*@
+                    {
+                        <strong>@Html.Encode(User.Identity.Name)</strong>
+                        @Html.ActionLink("Log Out", "Logout", "Home")
+                    }
+                    else
+                    {
+                        <strong>@Html.Encode(User.Identity.Name)</strong>
+                        @Html.ActionLink("Log In", "Login", "Home")
+                    }*@
             </div>
 
         </div>
@@ -82,8 +81,8 @@
 </body>
 </html>
 <script type="text/javascript">
-        function loadCart() {
-            $('#cart').load(document.URL + ' #cart');
-        }
-       
+    function loadCart() {
+        $('#cart').load(document.URL + ' #cart');
+    }
+
 </script>

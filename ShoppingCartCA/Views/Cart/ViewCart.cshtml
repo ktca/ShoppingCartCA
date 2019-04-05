@@ -6,11 +6,11 @@
 <h3>ViewCart</h3>
 @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
 {
-<div class="row" style="text-align:left; padding-left:10%;">
-    @Html.ActionLink("Continue Shopping", "Index", "Home", null,new { @class = "btn btn-default" })
-    
+    <div class="row" style="text-align:left; padding-left:10%;">
+        @Html.ActionLink("Continue Shopping", "Index", "Home", null, new { @class = "btn btn-default" })
 
-</div>
+
+    </div>
     if (ViewBag.ErrMsg != null)
     {
         <div class="row" style="padding-left:10%; padding-right:10%; padding-bottom:3%;">
@@ -29,10 +29,14 @@
     }
     else
     {
-
+        <div class="row" style="text-align:right; padding-right:10%;">
+            
+            <input class="btn btn-primary" type="submit" value="Checkout" />
+           
+        </div>
         <div id="totalPrice" class="row" style="text-align:right; padding-right:10%;">
             @{ var total = Model != null ? Model.Sum(x => x.productTotalPrice) : 0;}
-            <input class="btn btn-primary" type="submit" value="Checkout" />
+            
             <h4>Total : $@total </h4>
         </div>
 
@@ -76,7 +80,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 //alert("Success !!! " + data);
-                document.getElementById("totalPrice").innerHTML = "Total : $" + data;
+                document.getElementById("totalPrice").innerHTML = "<h4>Total : $" + data+"</h4>";
                 loadCart();
 
             }

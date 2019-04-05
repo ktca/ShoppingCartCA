@@ -1,36 +1,93 @@
 ﻿@model List<ShoppingCartCA.Models.UserCartModel>
 @{
-                /**/
-
-                ViewBag.Title = "View Cart";
+    ViewBag.Title = "View Cart";
 }
 
-<h2>ViewCart</h2>
-@foreach (var cart in Model)
+<h3>ViewCart</h3>
+@using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
 {
-    <div class="row" style="padding-left:10%; padding-right:10%;">
+    <div class="row" style="text-align:left; padding-left:10%;">
+        @Html.ActionLink("Continue Shopping", "Index", "Home", null, new { @class = "btn btn-default" })
 
-        <div class="col-md-4">
-            <img src="@cart.product.imagePath" width="50%;" height="50%;" />
-            <h2>@cart.product.productName</h2>
-            <p style="text-align:left;">
-                @cart.product.description
-            </p>
-        </div>
-        <div class="col-md-4" style="padding-top:8%;">
-            <p>
-                Price : @cart.product.price
-            </p>
-            <p>
-                Quantity : <input id="txtMyDecimal" value=@cart.quantity min="0" max="50" step="1" type="number">
-            </p>
-        </div>
 
     </div>
+    if (ViewBag.ErrMsg != null)
+    {
+        <div class="row" style="padding-left:10%; padding-right:10%; padding-bottom:3%;">
+            <h4 style="color:red;">@ViewBag.ErrMsg</h4>
+
+        </div>
+
+    }
+
+
+    if (Model == null || Model.Count() <= 0)
+    {
+        <div class="row" style="padding-left:10%; padding-right:10%;">
+            <h3>There is no product added to the cart currently.</h3>
+        </div>
+    }
+    else
+    {
+        <div class="row" style="text-align:right; padding-right:10%;">
+            
+            <input class="btn btn-primary" type="submit" value="Checkout" />
+           
+        </div>
+        <div id="totalPrice" class="row" style="text-align:right; padding-right:10%;">
+            @{ var total = Model != null ? Model.Sum(x => x.productTotalPrice) : 0;}
+            
+            <h4>Total : $@total </h4>
+        </div>
+
+        foreach (var cart in Model)
+        {
+            <div class="row" style="padding-left:10%; padding-right:10%;">
+
+                <div class="col-md-8">
+                    <img src="@cart.product.imagePath" width="200px;" height="200px;" />
+                    <h3>@cart.product.productName</h3>
+                    <p style="text-align:left;">
+                        @cart.product.description
+                    </p>
+                </div>
+                <div class="col-md-4" style="padding-top:8%;">
+                    <p>
+                        <b>Price : </b> $ @cart.product.price
+                    </p>
+                    <p>
+                        <b>Quantity : </b><input id="txtQty" value=@cart.quantity min="0" max="50" step="1" type="number" oninput="changeQty(@cart.product.productId,this);">
+                    </p>
+                </div>
+
+            </div>
+            <hr />
+        }
+    }
 }
+<script type="text/javascript">
 
+    function changeQty(r, v) {
+        debugger;
+        var qty = v.value;
+        //alert(qty);
+        var url = "../Cart/ChangeQuantity?Qty=" + qty + "&PID=" + r;
+        $.ajax({
+            url: url,
+            type: "POST",
+            async: true,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                //alert("Success !!! " + data);
+                document.getElementById("totalPrice").innerHTML = "<h4>Total : $" +parseFloat(data).toFixed(2)+"</h4>";
+                loadCart();
 
+            }
 
+        });
+    }
+</script>
 
 
 

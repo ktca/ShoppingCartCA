@@ -2,13 +2,14 @@
 @{
     ViewBag.Title = "Gallery";
 }
+<h3>Gallery</h3>
 <div class="row" style="padding-top:20px;">
     <div class="col-md-12" >
-        @Html.TextBox("searchKeyword", "", new { @id = "searchBox", @class = "form-control",@onkeypress= "search(event);" })
+        @Html.TextBox("searchKeyword", "", new { @id = "searchBox", @class = "form-control",@onkeypress= "search(event);" , @style="max-width:100%;", @placeholder="Search..."})
     </div>
     
 </div>
-<div id="partial">
+<div id="partial" style="padding-top:50px;">
     @Html.Partial("_GalleryPartial")
 </div>
 

@@ -17,7 +17,7 @@ namespace ShoppingCartCA.Controllers
        
         public ActionResult Login()
         {
-            //var encrypt = Cipher.Encrypt("123", KEY);
+           //var encrypt = Cipher.Encrypt("12345", KEY);
             return View();
         }
 

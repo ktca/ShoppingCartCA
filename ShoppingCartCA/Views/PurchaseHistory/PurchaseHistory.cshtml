@@ -3,14 +3,14 @@
     ViewBag.Title = "My Purchases";
 }
 
-<h2>My Purchases</h2>
+<h3>My Purchases</h3>
 @foreach (var purchase in Model)
 {
     <div class="row" style="padding-left:10%; padding-right:10%;">
 
         <div class="col-md-4">
             <img src="@purchase.Product.imagePath" width="50%;" height="50%;" />
-            <h2>@purchase.Product.productName</h2>
+            <h3>@purchase.Product.productName</h3>
             <p style="text-align:left;">@purchase.Product.description</p>
             <input type="submit" value="Download" />
         </div>

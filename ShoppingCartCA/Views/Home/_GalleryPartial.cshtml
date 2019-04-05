@@ -2,19 +2,26 @@
 
 @foreach (var product in Model)
 {
-    <div class="col-md-4" style="text-align:center;">
-        <img src="@product.imagePath" width="50%;" height="50%;"  />
-        <h2>@product.productName</h2>
-        <p style="text-align:left;">
-            @product.description
+    <div class="col-md-4" style="text-align:center; height:400px; ">
+        <img src="@product.imagePath" width="200px;" height="200px;" />
+        <h3>@product.productName</h3>
+        <p style="text-align:left;" alt="@product.description">
+            @{
+                string desc = product.description;
+                if (product.description.Length > 100)
+                { desc = product.description.Substring(0, 99); }
+            }
+
+
+            @desc
         </p>
-        <p>
-            <a class="btn btn-success" style="text-decoration:none;" onclick="AddToCart(@product.productId)">
-                <i class="glyphicon glyphicon-shopping-cart"></i>
-                $@decimal.Round(product.price, 2).ToString() - Add To Cart &raquo;
+        
+            <a class="btn btn-success" style="text-decoration:none; " onclick="AddToCart(@product.productId)">
+                
+                $ @decimal.Round(product.price, 2).ToString() - <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart 
             </a>
-            
-        </p>
+
+        
     </div>
-    
+
 }
